@@ -2,9 +2,10 @@ node {
     try {
         stage('Checkout') {
               stage 'Checkout'
-                //checkout scm: [$class: 'GitSCM', branches: [[name: '*/${GIT_BRANCH}']], userRemoteConfigs: [[url: '${GIT_URL}']]]
-                checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], \
-                               userRemoteConfigs: [[url: 'https://github.com/spineo/groovy-gradle-project.git']]]
+              checkout changelog: false, poll: false, \
+              scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: \
+                 [[$class: 'ScmName', name: 'gradle']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'Database', \
+                 url: 'https://github.com/spineo/groovy-gradle-project.git']]]
         }
         
         stage('Clean') {
