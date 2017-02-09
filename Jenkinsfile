@@ -7,6 +7,9 @@ node {
                                userRemoteConfigs: [[url: 'https://github.com/spineo/groovy-gradle-project.git']]]
         }
         
+        stage('Clean') {
+            sh "./gradlew clean"
+        
         stage('Prepare code') {
            echo 'Prepare code'
         }
