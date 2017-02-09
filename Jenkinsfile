@@ -1,0 +1,23 @@
+node {
+    try {
+        stage('Prepare code') {
+           echo 'Prepare code'
+        }
+
+        stage('Testing') {
+            echo 'Testing'
+        }
+
+        stage('Staging') {
+            echo 'Deploy Stage'
+        }
+        stage('Deploy') {
+            echo 'Deploy Stage'
+        }
+  } catch (e) {
+    currentBuild.result = "FAILED"
+    throw e
+  } finally {
+    echo 'Success'
+  }
+}
