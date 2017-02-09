@@ -9,6 +9,7 @@ node {
         
         stage('Clean') {
             sh "./gradlew clean"
+        }
         
         stage('Prepare code') {
            echo 'Prepare code'
