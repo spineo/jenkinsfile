@@ -1,5 +1,12 @@
 node {
     try {
+        stage('Checkout') {
+              stage 'Checkout'
+                //checkout scm: [$class: 'GitSCM', branches: [[name: '*/${GIT_BRANCH}']], userRemoteConfigs: [[url: '${GIT_URL}']]]
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], \
+                               userRemoteConfigs: [[url: 'https://github.com/spineo/groovy-gradle-project.git']]]
+        }
+        
         stage('Prepare code') {
            echo 'Prepare code'
         }
